@@ -1,32 +1,59 @@
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import './components/BookingForm.css';
+import React, { useState } from 'react';
+import '../styles/components/BookingForm.css'; // Correcta
 
-function BookingForm() {
-  const formik = useFormik({
-    initialValues: { name: '', date: '', guests: '' },
-    validationSchema: Yup.object({
-      name: Yup.string().required('El nombre es obligatorio'),
-      date: Yup.date().required('La fecha es obligatoria'),
-      guests: Yup.number().min(1, 'Debe haber al menos un invitado').required('El número de invitados es obligatorio'),
-    }),
-    onSubmit: values => alert('Reserva realizada: ' + JSON.stringify(values, null, 2)),
+const BookingForm = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    date: '',
+    time: '',
+    guests: '',
   });
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(`Reserva confirmada: ${JSON.stringify(formData)}`);
+  };
+
   return (
-    <form onSubmit={formik.handleSubmit}>
-      <input name="name" onChange={formik.handleChange} placeholder="Nombre" />
-      {formik.errors.name && <div>{formik.errors.name}</div>}
-
-      <input name="date" type="date" onChange={formik.handleChange} />
-      {formik.errors.date && <div>{formik.errors.date}</div>}
-
-      <input name="guests" type="number" onChange={formik.handleChange} placeholder="Número de invitados" />
-      {formik.errors.guests && <div>{formik.errors.guests}</div>}
-
+    <form className="booking-form" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        placeholder="Tu nombre"
+        value={formData.name}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="date"
+        name="date"
+        value={formData.date}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="time"
+        name="time"
+        value={formData.time}
+        onChange={handleChange}
+        required
+      />
+      <input
+        type="number"
+        name="guests"
+        placeholder="Número de personas"
+        value={formData.guests}
+        onChange={handleChange}
+        required
+      />
       <button type="submit">Reservar</button>
     </form>
   );
-}
+};
 
 export default BookingForm;

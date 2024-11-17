@@ -1,0 +1,8 @@
+/* src/styles/pages/HomePage.css */
+main {
+    padding: 2rem;
+    text-align: center;
+  }
+  h1 {
+    color: #333;
+  }

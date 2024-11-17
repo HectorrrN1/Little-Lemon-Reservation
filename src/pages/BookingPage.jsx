@@ -1,14 +1,15 @@
 import React from 'react';
 import BookingForm from '../components/BookingForm';
-import './pages/BookingPage.css';
+import '../styles/pages/BookingPage.css'; // Correcta
 
-function BookingPage() {
+const BookingPage = () => {
   return (
-    <main>
+    <main className="booking-page">
       <h1>Haz tu reserva</h1>
       <BookingForm />
     </main>
   );
-}
+};
 
 export default BookingPage;
+

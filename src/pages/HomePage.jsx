@@ -1,5 +1,5 @@
 import React from 'react';
-import './pages/HomePage.css';
+import '../styles/pages/HomePage.css'; // Correcta
 
 function HomePage() {
   return (
