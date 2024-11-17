@@ -17,7 +17,7 @@ const BookingForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(`Reserva confirmada: ${JSON.stringify(formData)}`);
-  };
+  }; //modif 
 
   return (
     <form className="booking-form" onSubmit={handleSubmit}>
