@@ -11,7 +11,7 @@ const Navbar = () => {
         <li><a href="#about">Acerca de</a></li>
       </ul>
     </nav>
-  );
+  );  
 };
 
 export default Navbar;
